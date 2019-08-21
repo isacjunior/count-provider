@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import './action.dart';
+import './model.dart';
 
 enum CounterTypes {
   increment,
