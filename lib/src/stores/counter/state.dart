@@ -12,12 +12,11 @@ class CounterStore with ChangeNotifier {
   int get count => _counter.count;
 
   void dispatch(CounterTypes type) {
-    switch(type) {
-      case CounterTypes.increment: _counter.increment();
-      break;
-      case CounterTypes.decrement: _counter.decrement();
-      break;
-    }
+    final action = {
+      CounterTypes.increment: _counter.increment,
+      CounterTypes.decrement: _counter.decrement,
+    }[type];
+    action();
     notifyListeners();
   }
 }
