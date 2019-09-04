@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [ChangeNotifierProvider(builder: (_) => CounterStore())],
+      providers: [ChangeNotifierProvider(builder: (context) => CounterStore())],
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(

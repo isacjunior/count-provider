@@ -5,7 +5,7 @@ import '../stores/counter/state.dart';
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final _counter = Provider.of<CounterStore>(context, listen: false);
+    final _counter = Provider.of<CounterStore>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Provider counter page'),
