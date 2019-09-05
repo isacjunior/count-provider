@@ -5,7 +5,7 @@ import '../stores/counter/state.dart';
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final _counter = Provider.of<CounterStore>(context);
+    final _counterProvider = Provider.of<CounterStore>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Provider counter page'),
@@ -17,13 +17,9 @@ class Home extends StatelessWidget {
             Text(
               'You have pushed the button this many times:',
             ),
-            Consumer<CounterStore>(
-              builder: (context, counter, _) {
-                return Text(
-                  '${counter.count}',
-                  style: Theme.of(context).textTheme.display1,
-                );
-              },
+            Text(
+              _counterProvider.count.toString(),
+              style: Theme.of(context).textTheme.display1,
             ),
           ],
         ),
@@ -32,13 +28,15 @@ class Home extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
           FloatingActionButton(
-            onPressed: () => _counter.dispatch(CounterTypes.decrement),
+            onPressed: () => _counterProvider.dispatch(CounterTypes.decrement),
             tooltip: 'Decrement',
             child: Icon(Icons.remove),
           ),
-          SizedBox(width: 10,),
+          SizedBox(
+            width: 10,
+          ),
           FloatingActionButton(
-            onPressed: () => _counter.dispatch(CounterTypes.increment),
+            onPressed: () => _counterProvider.dispatch(CounterTypes.increment),
             tooltip: 'Increment',
             child: Icon(Icons.add),
           ),
